@@ -107,18 +107,40 @@
             font-size: 1rem;
             color: #dddddd;
             margin-top: 1rem;
-            text-align: left; /* Left-align subtitle text */
-            position: relative; /* Needed to position absolutely */
-            left: -50%; /* Pull text back to it's left most edge of the screen */
-            transform: translateX(50%); /* Offset the text horizontally */
+            text-align: left;
+            position: relative;
+            left: -50%;
+            transform: translateX(50%);
         }
-
 
         @keyframes dots {
             0% { content: ''; }
             33% { content: '.'; }
             66% { content: '..'; }
             100% { content: '...'; }
+        }
+
+
+        /* Styles for mobile devices */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem; /* Smaller title on mobile */
+            }
+            .subtitle {
+                font-size: 0.8rem; /* Smaller subtitle on mobile */
+             }
+
+            .code-line {
+                font-size: 8px; /* Smaller code lines on mobile */
+             }
+         }
+
+
+        /* Styles for larger devices */
+        @media (min-width: 769px) {
+            .code-line {
+                font-size: 12px; /* Larger code lines on desktop */
+             }
         }
     </style>
 </head>
