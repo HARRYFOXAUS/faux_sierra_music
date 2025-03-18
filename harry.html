@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Harry - Faux Sierra Music</title>
+  <title>fauxsierramusic_owner</title>
   <style>
     body {
       margin: 0;
@@ -14,6 +14,12 @@
       overflow: hidden;
     }
 
+    @font-face {
+      font-family: "Digital";
+      src: url("https://fonts.cdnfonts.com/s/76256/digital-7.woff") format("woff");
+    }
+
+    /* Code art background styles */
     .code-art-container {
       position: absolute;
       width: 100vw;
@@ -22,21 +28,94 @@
       z-index: 1;
     }
 
-    .container {
-      position: relative;
+    .code-line {
+      position: absolute;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      white-space: nowrap;
+      opacity: 0;
+      animation: fall linear infinite, fade-in linear forwards;
+      animation-delay: var(--animation-delay, 0s);
+    }
+
+    .code-line.horizontal {
+      animation: scroll linear infinite, fade-in linear forwards;
+      animation-delay: var(--animation-delay, 0s);
+    }
+
+    .code-line.vertical {
+      color: rgba(255, 255, 255, 0.8);
+      animation: vertical-scroll linear infinite, fade-in linear forwards;
+      animation-delay: var(--animation-delay, 0s);
+      white-space: nowrap;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100%);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100vw);
+      }
+    }
+
+    @keyframes vertical-scroll {
+      0% {
+        transform: translateY(100vh) rotate(-90deg);
+      }
+      100% {
+        transform: translateY(-100vh) rotate(-90deg);
+      }
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0.5;
+      }
+    }
+
+    /* Content container for the embeds */
+    .content-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: 10;
       max-width: 900px;
       width: 100%;
       padding: 20px;
       text-align: center;
+      background: rgba(0, 0, 0, 0.6); /* Subtle overlay for readability */
+      border-radius: 8px;
     }
 
-    h1 {
+    .content-container h1 {
+      font-size: 3rem;
       font-family: "Digital", monospace;
-      font-size: 2.5rem;
       letter-spacing: 0.1em;
       color: #ffffff;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+    }
+
+    .back-link {
+      display: block;
+      text-align: left;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #dddddd;
+      text-decoration: underline;
     }
 
     .widget-container {
@@ -56,35 +135,49 @@
       border: none;
       border-radius: 12px;
     }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .content-container h1 {
+        font-size: 2rem;
+      }
+      .code-line {
+        font-size: 8px;
+      }
+    }
+    @media (min-width: 769px) {
+      .code-line {
+        font-size: 12px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="code-art-container" id="code-container"></div>
 
-  <div class="container">
-    <h1>&lt;Harry_Fox&gt;</h1>
+  <div class="content-container">
+    <a class="back-link" href="index.html">&lt;back&gt;</a>
+    <h1>owner_harryfox</h1>
     <div class="widget-container">
-      <!-- Instagram frame for harryfoxaus personal account (dark mode) -->
+      <!-- Instagram embed for harryfoxaus personal account -->
       <iframe
         class="instagram-frame"
         src="https://www.instagram.com/harryfoxaus/embed"
         scrolling="no"
         allowtransparency="true"
-        frameborder="0"
-        style="filter: invert(1);">
+        frameborder="0">
       </iframe>
-      
-      <!-- Instagram frame for spacerunnerthedj account (dark mode) -->
+
+      <!-- Instagram embed for spacerunnerthedj account -->
       <iframe
         class="instagram-frame"
         src="https://www.instagram.com/spacerunnerthedj/embed"
         scrolling="no"
         allowtransparency="true"
-        frameborder="0"
-        style="filter: invert(1);">
+        frameborder="0">
       </iframe>
     </div>
-    
+
     <!-- Spotify embed for Spacerunner song "fade" -->
     <iframe
       class="spotify-embed"
@@ -100,24 +193,45 @@
   </div>
 
   <script>
+    // Function to generate random code snippets
     function generateRandomCode() {
       const snippets = [
-        "function loadArtist() {",
-        "let music = generate(vibe);",
-        "if (streaming) { amplify(track); }",
-        "system.play(mix);",
-        "export { waveform };",
-        "frequency(440).modulate();",
-        "import theme from 'darknet';"
+        "function start() {",
+        "let track = play(beat);",
+        "const sound = mix(channel);",
+        "if (loop) { fade(inout); }",
+        "system.render(track);",
+        "export { vibe };",
+        "waveform.amplify();",
+        "delay.effect = true;",
+        "for (i = 0; i < infinite; i++) {",
+        "return frequency(440);",
+        "track.mixdown();",
+        "import module from 'vibes';"
       ];
       return snippets[Math.floor(Math.random() * snippets.length)];
     }
 
+    // Generate vertical text snippets
+    function generateVerticalText() {
+      const snippets = [
+        "real music",
+        "ethical ai",
+        "amazing plug-ins",
+        "music licensing"
+      ];
+      return snippets[Math.floor(Math.random() * snippets.length)];
+    }
+
+    // Generate cascading code lines
     function populateCodeLines() {
       const container = document.getElementById('code-container');
-      const numLines = 50;
+      const numVerticalLines = 1000;
+      const numHorizontalLines = 25;
+      const numVerticalScrollLines = 50;
 
-      for (let i = 0; i < numLines; i++) {
+      // Create vertical lines
+      for (let i = 0; i < numVerticalLines; i++) {
         const line = document.createElement('div');
         line.className = 'code-line';
         line.textContent = generateRandomCode();
@@ -126,11 +240,36 @@
         line.style.setProperty('--animation-delay', `${Math.random() * 10}s`);
         container.appendChild(line);
       }
+
+      // Create horizontal lines
+      for (let i = 0; i < numHorizontalLines; i++) {
+        const line = document.createElement('div');
+        line.className = 'code-line horizontal';
+        line.textContent = generateRandomCode();
+        line.style.top = `${Math.random() * 100}vh`;
+        line.style.animationDuration = `${10 + Math.random() * 20}s`;
+        line.style.setProperty('--animation-delay', `${Math.random() * 10}s`);
+        container.appendChild(line);
+      }
+
+      // Create vertical scrolling lines
+      for (let i = 0; i < numVerticalScrollLines; i++) {
+        const line = document.createElement('div');
+        line.className = 'code-line vertical';
+        line.textContent = generateVerticalText();
+        line.style.left = `${Math.random() * 100}vw`;
+        line.style.top = `${Math.random() * 100}vh`;
+        line.style.animationDuration = `${10 + Math.random() * 20}s`;
+        line.style.setProperty('--animation-delay', `${Math.random() * 10}s`);
+        container.appendChild(line);
+      }
     }
 
+    // Initialize the effects
     populateCodeLines();
   </script>
 </body>
 </html>
+
 
 
