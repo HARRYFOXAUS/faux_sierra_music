@@ -1,257 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fauxsierramusic_owner</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Courier New', Courier, monospace;
-      background-color: #0a0a0a;
-      color: #ffffff;
-      /* Allow vertical scrolling while hiding horizontal overflow */
-      overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>faux_sierra_music loading...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow: hidden;
+        }
 
-    @font-face {
-      font-family: "Digital";
-      src: url("https://fonts.cdnfonts.com/s/76256/digital-7.woff") format("woff");
-    }
+        @font-face {
+            font-family: "Digital";
+            src: url("https://fonts.cdnfonts.com/s/76256/digital-7.woff") format("woff");
+        }
 
-    /* Code art background styles */
-    .code-art-container {
-      position: fixed; /* Fixed so it stays in the background while scrolling */
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      z-index: 1;
-      pointer-events: none; /* So the background doesn't block scrolling/taps */
-    }
+        .code-art-container {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 1;
+        }
 
-    .code-line {
-      position: absolute;
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.5);
-      white-space: nowrap;
-      opacity: 0;
-      animation: fall linear infinite, fade-in linear forwards;
-      animation-delay: var(--animation-delay, 0s);
-    }
+       .code-line {
+            position: absolute;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            white-space: nowrap;
+            opacity: 0;
+            animation: fall linear infinite, fade-in linear forwards;
+            animation-delay: var(--animation-delay, 0s);
+        }
 
-    .code-line.horizontal {
-      animation: scroll linear infinite, fade-in linear forwards;
-      animation-delay: var(--animation-delay, 0s);
-    }
+        .code-line.horizontal {
+             animation: scroll linear infinite, fade-in linear forwards;
+             animation-delay: var(--animation-delay, 0s);
+        }
 
-    .code-line.vertical {
-      color: rgba(255, 255, 255, 0.8);
-      animation: vertical-scroll linear infinite, fade-in linear forwards;
-      animation-delay: var(--animation-delay, 0s);
-      white-space: nowrap;
-    }
+        .code-line.vertical {
+            color: rgba(255, 255, 255, 0.8);
+            animation: vertical-scroll linear infinite, fade-in linear forwards;
+            animation-delay: var(--animation-delay, 0s);
+            white-space: nowrap;
+        }
 
-    @keyframes fall {
-      0% {
-        transform: translateY(-100%);
-      }
-      100% {
-        transform: translateY(100vh);
-      }
-    }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
 
-    @keyframes scroll {
-      0% {
-        transform: translateX(-100%);
-      }
-      100% {
-        transform: translateX(100vw);
-      }
-    }
+        @keyframes scroll {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
 
-    @keyframes vertical-scroll {
-      0% {
-        transform: translateY(100vh) rotate(-90deg);
-      }
-      100% {
-        transform: translateY(-100vh) rotate(-90deg);
-      }
-    }
+       @keyframes vertical-scroll {
+             0% {
+                transform: translateY(100vh) rotate(-90deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(-90deg);
+            }
+        }
 
-    @keyframes fade-in {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 0.5;
-      }
-    }
 
-    /* Content container for the embeds */
-    .content-container {
-      position: relative; /* So it stacks above the fixed background */
-      z-index: 10;
-      max-width: 900px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6); /* Subtle overlay for readability */
-      border-radius: 8px;
-      /* Ensure there's enough height to scroll if needed */
-      min-height: 100vh;
-    }
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0.5;
+            }
+        }
 
-    .content-container h1 {
-      font-size: 3rem;
-      font-family: "Digital", monospace;
-      letter-spacing: 0.1em;
-      color: #ffffff;
-      margin-bottom: 20px;
-    }
+        .title-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+        }
 
-    .subtitle {
-      font-size: 1rem;
-      color: #dddddd;
-      margin-bottom: 1.5rem;
-    }
+        .title {
+            font-size: 3rem;
+            font-family: "Digital", monospace;
+            color: #ffffff;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+        }
 
-    .back-link {
-      display: inline-block;
-      margin-bottom: 30px;
-      font-size: 1rem;
-      color: #dddddd;
-      text-decoration: underline;
-    }
+         .subtitle {
+            font-size: 1rem;
+            color: #dddddd;
+            margin-top: 1rem;
+            text-align: left;
+            position: relative;
+            left: -50%;
+            transform: translateX(50%);
+             padding-left: 60px; /* add left padding */
+                padding-right: 60px; /* add right padding */
+        }
 
-    .widget-container {
-      margin-bottom: 40px;
-    }
+        @keyframes dots {
+            0% { content: ''; }
+            33% { content: '.'; }
+            66% { content: '..'; }
+            100% { content: '...'; }
+        }
 
-    iframe.instagram-frame {
-      width: 100%;
-      height: 500px;
-      border: none;
-      margin-bottom: 20px;
-    }
 
-    iframe.spotify-embed {
-      width: 100%;
-      height: 352px;
-      border: none;
-      border-radius: 12px;
-    }
+        /* Styles for mobile devices */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+                padding-left: 30px; /* add left padding */
+                padding-right: 30px; /* add right padding */
+            }
+            .subtitle {
+                font-size: 0.8rem;
 
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-      .content-container h1 {
-        font-size: 2rem;
-      }
-      .code-line {
-        font-size: 8px;
-      }
-    }
-    @media (min-width: 769px) {
-      .code-line {
-        font-size: 12px;
-      }
-    }
-  </style>
+             }
+
+            .code-line {
+                font-size: 8px;
+             }
+         }
+
+
+        /* Styles for larger devices */
+        @media (min-width: 769px) {
+            .code-line {
+                font-size: 12px;
+             }
+        }
+    </style>
 </head>
 <body>
-  <!-- Code art background container -->
-  <div class="code-art-container" id="code-container"></div>
+    <div class="code-art-container" id="code-container"></div>
 
-  <!-- Main content container -->
-  <div class="content-container">
-    <h1>owner_harryfox</h1>
-    <p class="subtitle">email: harry@fauxsierramusic.com</p>
-    <a class="back-link" href="index.html">&lt;back&gt;</a>
-
-    <div class="widget-container">
-      <!-- Instagram embed for harryfoxaus personal account -->
-      <iframe
-        class="instagram-frame"
-        src="https://www.instagram.com/harryfoxaus/embed"
-        scrolling="no"
-        allowtransparency="true"
-        frameborder="0">
-      </iframe>
-
-      <!-- Instagram embed for spacerunnerthedj account -->
-      <iframe
-        class="instagram-frame"
-        src="https://www.instagram.com/spacerunnerthedj/embed"
-        scrolling="no"
-        allowtransparency="true"
-        frameborder="0">
-      </iframe>
+    <div class="title-container">
+        <h1 class="title">faux_sierra_music</h1>
+        <p class="subtitle" id="loading-text">loading<span id="dots">...</span></p>
+<p style="text-align:left; position:relative; left:-50%; transform:translateX(50%); padding-left: 60px; padding-right: 60px; margin-top: 0.3rem;"><a href="/harry.html" style="color: #dddddd; text-decoration:underline;">&lt;about the owner&gt;</a></p>
     </div>
 
-    <!-- Spotify embed for Spacerunner song "fade" -->
-    <iframe
-      class="spotify-embed"
-      style="border-radius:12px"
-      src="https://open.spotify.com/embed/track/0qdnsWBdLTX8cReUG6eXwF?utm_source=generator"
-      allowfullscreen=""
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy">
-    </iframe>
-  </div>
+    <script>
+        // Function to generate random code snippets
+         function generateRandomCode() {
+            const snippets = [
+                "function start() {",
+                "let track = play(beat);",
+                "const sound = mix(channel);",
+                "if (loop) { fade(inout); }",
+                "system.render(track);",
+                "export { vibe };",
+                "waveform.amplify();",
+                "delay.effect = true;",
+                "for (i = 0; i < infinite; i++) {",
+                "return frequency(440);",
+                "track.mixdown();",
+                "import module from 'vibes';"
+            ];
+            return snippets[Math.floor(Math.random() * snippets.length)];
+        }
 
-  <script>
-    // Function to generate random code snippets
-    function generateRandomCode() {
-      const snippets = [
-        "function start() {",
-        "let track = play(beat);",
-        "const sound = mix(channel);",
-        "if (loop) { fade(inout); }",
-        "system.render(track);",
-        "export { vibe };",
-        "waveform.amplify();",
-        "delay.effect = true;",
-        "for (i = 0; i < infinite; i++) {",
-        "return frequency(440);",
-        "track.mixdown();",
-        "import module from 'vibes';"
-      ];
-      return snippets[Math.floor(Math.random() * snippets.length)];
-    }
+        // Generate vertical text snippets
+        function generateVerticalText() {
+             const snippets = [
+                "real music",
+                "ethical ai",
+                 "amazing plug-ins",
+                 "music licensing"
+             ]
+             return snippets[Math.floor(Math.random() * snippets.length)]
+         }
 
-    // Generate vertical text snippets
-    function generateVerticalText() {
-      const snippets = [
-        "real music",
-        "ethical ai",
-        "amazing plug-ins",
-        "music licensing"
-      ];
-      return snippets[Math.floor(Math.random() * snippets.length)];
-    }
 
-    // Populate background with animated code lines
-    function populateCodeLines() {
-      const container = document.getElementById('code-container');
-      const numVerticalLines = 1000;
-      const numHorizontalLines = 25;
-      const numVerticalScrollLines = 50;
+        // Generate cascading code lines
+        function populateCodeLines() {
+            const container = document.getElementById('code-container');
+            const numVerticalLines = 1000;
+            const numHorizontalLines = 25;
+            const numVerticalScrollLines = 50;
 
-      // Create vertical lines
-      for (let i = 0; i < numVerticalLines; i++) {
-        const line = document.createElement('div');
-        line.className = 'code-line';
-        line.textContent = generateRandomCode();
-        line.style.left = `${Math.random() * 100}vw`;
-        line.style.animationDuration = `${10 + Math.random() * 15}s`;
-        line.style.setProperty('--animation-delay', `${Math.random() * 10}s`);
-        container.appendChild(line);
-      }
+            // Create vertical lines
+            for (let i = 0; i < numVerticalLines; i++) {
+                const line = document.createElement('div');
+                line.className = 'code-line';
+                line.textContent = generateRandomCode();
+                line.style.left = `${Math.random() * 100}vw`;
+                line.style.animationDuration = `${10 + Math.random() * 15}s`;
+                line.style.setProperty('--animation-delay', `${Math.random() * 10}s`);
+                container.appendChild(line);
+            }
 
-      // Create horizontal lines
-      for (let i = 0; i < numHorizontalLines; i++) {
-        const line = document.createElement('div');
-        line.className = 'code-line ho
+            // Create horizontal lines
+            for (let i = 0; i < numHorizontalLines; i++) {
+                const line = document.createElement('div');
+                line.className = 'code-line horizontal';
+                line.textContent = generateRandomCode();
+                line.style.top = `${Math.random() * 100}vh`;
+                line.style.animationDuration = `${10 + Math.random() * 20}s`;
+                line.style.setProperty('--animation-delay', `${Math.random() * 10}s`);
+                container.appendChild(line);
+            }
+
+            // Create vertical scrolling lines
+             for (let i = 0; i < numVerticalScrollLines; i++) {
+                const line = document.createElement('div');
+                line.className = 'code-line vertical';
+                line.textContent = generateVerticalText();
+                line.style.left = `${Math.random() * 100}vw`;
+                line.style.top = `${Math.random() * 100}vh`;
+                line.style.animationDuration = `${10 + Math.random() * 20}s`;
+                line.style.setProperty('--animation-delay', `${Math.random() * 10}s`);
+                container.appendChild(line);
+             }
+        }
+
+        // Animate the loading dots
+        function animateLoadingDots() {
+            const dotsElement = document.getElementById('dots');
+            let dots = 0;
+
+            setInterval(() => {
+                dots = (dots + 1) % 4;
+                dotsElement.textContent = '.'.repeat(dots);
+            }, 500);
+        }
+
+        // Initialize the effects
+        populateCodeLines();
+        animateLoadingDots();
+    </script>
+</body>
+</html>
