@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fauxsierramusic_owner</title>
+  <title>Harry - Faux Sierra Music</title>
   <style>
     body {
       margin: 0;
@@ -11,7 +11,8 @@
       font-family: 'Courier New', Courier, monospace;
       background-color: #0a0a0a;
       color: #ffffff;
-      overflow: hidden;
+      /* Allow vertical scrolling while hiding horizontal overflow */
+      overflow-x: hidden;
     }
 
     @font-face {
@@ -21,11 +22,14 @@
 
     /* Code art background styles */
     .code-art-container {
-      position: absolute;
+      position: fixed; /* Fixed so it stays in the background while scrolling */
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
       overflow: hidden;
       z-index: 1;
+      pointer-events: none; /* So the background doesn't block scrolling/taps */
     }
 
     .code-line {
@@ -88,17 +92,17 @@
 
     /* Content container for the embeds */
     .content-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: relative; /* So it stacks above the fixed background */
       z-index: 10;
       max-width: 900px;
       width: 100%;
+      margin: 0 auto;
       padding: 20px;
       text-align: center;
       background: rgba(0, 0, 0, 0.6); /* Subtle overlay for readability */
       border-radius: 8px;
+      /* Ensure there's enough height to scroll if needed */
+      min-height: 100vh;
     }
 
     .content-container h1 {
@@ -153,8 +157,10 @@
   </style>
 </head>
 <body>
+  <!-- Code art background container -->
   <div class="code-art-container" id="code-container"></div>
 
+  <!-- Main content container -->
   <div class="content-container">
     <a class="back-link" href="index.html">&lt;back&gt;</a>
     <h1>owner_harryfox</h1>
@@ -183,9 +189,6 @@
       class="spotify-embed"
       style="border-radius:12px"
       src="https://open.spotify.com/embed/track/0qdnsWBdLTX8cReUG6eXwF?utm_source=generator"
-      width="100%"
-      height="352"
-      frameborder="0"
       allowfullscreen=""
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy">
@@ -223,7 +226,7 @@
       return snippets[Math.floor(Math.random() * snippets.length)];
     }
 
-    // Generate cascading code lines
+    // Populate background with animated code lines
     function populateCodeLines() {
       const container = document.getElementById('code-container');
       const numVerticalLines = 1000;
@@ -265,7 +268,7 @@
       }
     }
 
-    // Initialize the effects
+    // Initialize background code lines
     populateCodeLines();
   </script>
 </body>
