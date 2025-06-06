@@ -1,0 +1,158 @@
+/* Shared styles for faux_sierra_music */
+
+@font-face {
+    font-family: "Digital";
+    src: url("https://fonts.cdnfonts.com/s/76256/digital-7.woff") format("woff");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Use when vertical scrolling should be disabled */
+body.no-scroll {
+    overflow: hidden;
+}
+
+.code-art-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Fixed background variation */
+.code-art-container.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.code-line {
+    position: absolute;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+    opacity: 0;
+    animation: fall linear infinite, fade-in linear forwards;
+    animation-delay: var(--animation-delay, 0s);
+}
+
+.code-line.horizontal {
+    animation: scroll linear infinite, fade-in linear forwards;
+    animation-delay: var(--animation-delay, 0s);
+}
+
+.code-line.vertical {
+    color: rgba(255, 255, 255, 0.8);
+    animation: vertical-scroll linear infinite, fade-in linear forwards;
+    animation-delay: var(--animation-delay, 0s);
+    white-space: nowrap;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes scroll {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100vw); }
+}
+
+@keyframes vertical-scroll {
+    0% { transform: translateY(100vh) rotate(-90deg); }
+    100% { transform: translateY(-100vh) rotate(-90deg); }
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 0.5; }
+}
+
+/* Home page title */
+.title-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.title {
+    font-size: 3rem;
+    font-family: "Digital", monospace;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #dddddd;
+    margin-top: 1rem;
+}
+
+/* Containers for owner and playlist pages */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Owner page specific widgets */
+.widget-container { margin-bottom: 40px; }
+iframe.instagram-frame {
+    width: 100%;
+    height: 500px;
+    border: none;
+    margin-bottom: 20px;
+}
+iframe.spotify-embed {
+    width: 100%;
+    height: 352px;
+    border: none;
+    border-radius: 12px;
+}
+
+.disco-embed {
+    width: 90vw;
+    max-width: 880px;
+}
+
+.back-link {
+    color: #dddddd;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .title { font-size: 2rem; padding-left: 30px; padding-right: 30px; }
+    .subtitle { font-size: 0.8rem; }
+    .code-line { font-size: 8px; }
+    .disco-embed { max-width: 90vw; }
+    .content-container h1 { font-size: 2rem; }
+}
+
+@media (min-width: 769px) {
+    .code-line { font-size: 12px; }
+    .disco-embed { max-width: 800px; width: 800px; }
+}
