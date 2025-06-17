@@ -49,6 +49,10 @@
   </div>
 
   <script src="app.js"></script>
-  <script>populateCodeLines();</script>
+  <script>
+    populateCodeLines();
+    // Ensure the page starts at the very top in case embeds shift focus
+    window.scrollTo(0, 0);
+  </script>
 </body>
 </html>
