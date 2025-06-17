@@ -25,6 +25,7 @@ body.no-scroll {
     height: 100vh;
     overflow: hidden;
     z-index: 1;
+    pointer-events: none;
 }
 
 /* Fixed background variation */
