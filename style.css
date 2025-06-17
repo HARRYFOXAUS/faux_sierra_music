@@ -105,17 +105,24 @@ body.no-scroll {
 .content-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    justify-content: flex-start;
+    position: relative;
+    margin: 0 auto;
     z-index: 10;
     max-width: 900px;
     width: 100%;
     padding: 20px;
     text-align: center;
+}
+
+/* Optional class to vertically center content when needed */
+.content-container.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
 }
 
 /* Owner page specific widgets */
