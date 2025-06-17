@@ -1,7 +1,7 @@
 # faux_sierra_music
 
-This repository contains the source for the **faux_sierra_music** website.  The
-site is a small collection of static HTML pages served through GitHub Pages.
+This repository contains the source for the **faux_sierra_music** website and the
+Ultimate Chord Reader app.
 
 ## Deployment
 
@@ -24,8 +24,10 @@ Pushing changes to `main` will automatically update the live site.
 
 After editing files, commit the changes and push to GitHub.
 
-## Development tips
+## Ultimate Chord Reader
 
-No build step is required.  You can open the HTML files locally in a browser to
-preview changes.  If you introduce additional dependencies, ensure they do not
-require server-side processing so the site remains fully static.
+The `ultimate_chord_reader.py` script provides a local workflow for
+transcribing songs. Drop audio files into `input_songs/` and run
+`python ultimate_chord_reader.py` to generate text chord charts in
+`output_charts/`.
+
