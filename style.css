@@ -102,6 +102,13 @@ body.no-scroll {
     margin-top: 1rem;
 }
 
+/* Reusable header font styling */
+.header-text {
+    font-family: "Digital", monospace;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
 /* Containers for owner and playlist pages */
 .content-container {
     display: flex;
