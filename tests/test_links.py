@@ -2,7 +2,7 @@ import os
 from html.parser import HTMLParser
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-HTML_FILES = ["index.html", "harry.html", "choreography.html"]
+HTML_FILES = ["index.html", "harry.html"]
 
 try:
     from bs4 import BeautifulSoup  # type: ignore
@@ -59,7 +59,6 @@ def test_links_resolve():
     link_map = {
         "index.html": ["/harry.html"],
         "harry.html": ["index.html"],
-        "choreography.html": ["/"],
     }
     for src, targets in link_map.items():
         _, links = load_html(src)

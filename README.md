@@ -16,8 +16,7 @@ Pushing changes to `main` will automatically update the live site.
 
 ## Updating pages
 
-* Edit the HTML files directly (`index.html`, `harry.html`,
-  `choreography.html`).
+* Edit the HTML files directly (`index.html`, `harry.html`).
 * Shared styles and JavaScript live in `style.css` and `app.js`.
 * To create a new page, copy an existing HTML file and modify the content
   inside the `<div class="content-container">` area.
