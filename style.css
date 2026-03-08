@@ -194,15 +194,17 @@ body.no-scroll {
 }
 
 .loading-line {
-    display: inline-flex;
-    align-items: baseline;
-    justify-content: center;
+    position: relative;
+    display: inline-block;
     white-space: nowrap;
     margin-bottom: 0;
 }
 
 .loading-dots {
-    display: inline-block;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-left: 0.08em;
     min-width: 3ch;
     text-align: left;
 }
