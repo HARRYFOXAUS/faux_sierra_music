@@ -265,7 +265,7 @@ body.no-scroll {
 
 .owner-title {
     margin: 0;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.65rem, 3.1vw, 2.4rem);
     text-align: center;
     line-height: 1.05;
 }
@@ -279,7 +279,7 @@ body.no-scroll {
 }
 
 .owner-social-panel {
-    width: min(380px, 100%);
+    width: min(420px, 100%);
 }
 
 .owner-audio-panel {
@@ -309,7 +309,7 @@ body.no-scroll {
 .widget-container { margin-bottom: 40px; }
 iframe.instagram-frame {
     width: 100%;
-    height: 500px;
+    height: 760px;
     border: none;
     margin-bottom: 20px;
 }
@@ -367,7 +367,7 @@ iframe.spotify-embed {
         border-radius: 14px;
     }
     .owner-card iframe.instagram-frame {
-        height: 420px;
+        height: 620px;
     }
 }
 
